@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import LoginPage from './Components/Login/LoginPage';
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import Register from './Components/Register/Register';
+import CustomerDashboard from './Components/CustomerDashboard/CustomerDashboard';
+import TokenContextProvider from "./TokenContext";
+import EngineerDashboard from './Components/EngineerDashboard';
 
 function App() {
+  const [token, setToken] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+    <TokenContextProvider>
+      <Router>
+        <Routes>
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/Register" element={<Register/>} />
+        <Route path="/login/CustomerDashboard" element={<CustomerDashboard/>} />
+        <Route path="/login/EngineerDashboard" element={<EngineerDashboard/>} />
+        </Routes>
+      </Router>
+      </TokenContextProvider>
+  </div>
   );
 }
 

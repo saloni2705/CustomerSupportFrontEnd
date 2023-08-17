@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navigation } from "./Components/navigation";
 import LoginPage from "./Components/Login/LoginPage";
 import Register from "./Components/Register/Register";
 import CustomerDashboard from "./Components/CustomerDashboard/CustomerDashboard";
 import EngineerDashboard from "./Components/EngineerDashboard";
 import TokenContextProvider from "./TokenContext";
-import { Header } from "./Components/header";
+import Header from "./Components/Header";// Import the Header component
+import { LandingHeader } from "./Components/LandingHeader"; // Import the LandingHeader component
 import { About } from "./Components/about";
 import { Services } from "./Components/service";
 import { Gallery } from "./Components/gallery";
@@ -15,6 +15,8 @@ import { Team } from "./Components/Team";
 import { Contact } from "./Components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
+import { Table } from 'reactstrap';
+import UpdateComplaints from './Components/UpdateComplaints/UpdateComplaints';
 import "./App.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -39,7 +41,8 @@ function App() {
   return (
     <TokenContextProvider>
       <Router>
-        <Navigation />
+        {/* Use the Header component */}
+        <Header />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
@@ -51,6 +54,7 @@ function App() {
             path="/login/EngineerDashboard"
             element={<EngineerDashboard />}
           />
+          <Route path="/login/EngineerDashboard/updateComplaints" element={<UpdateComplaints/>} />
           <Route
             path="/"
             element={
@@ -69,7 +73,7 @@ function App() {
 
 const MainPage = ({ landingPageData }) => (
   <div>
-    <Header data={landingPageData.Header} />
+    <LandingHeader data={landingPageData.LandingHeader} />
     <About data={landingPageData.About} />
     <Services data={landingPageData.Services} />
     <Gallery data={landingPageData.Gallery} />

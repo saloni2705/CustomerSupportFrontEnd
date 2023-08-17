@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import React, { useState , useContext, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { TokenContext } from "../../TokenContext";
+import Sidebar from "../Sidebar";
 
-
-function  EngineerDashboard() {
+function EngineerDashboard() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -12,7 +11,7 @@ function  EngineerDashboard() {
         const response = await fetch('http://localhost:8080/auth/admin/1', {
           credentials: 'include', // Set withCredentials to true
         });
-  
+
         if (response.ok) {
           const responseData = await response.json();
           setData(responseData);
@@ -23,22 +22,19 @@ function  EngineerDashboard() {
         console.error('Error:', error);
       }
     };
-  
+
     fetchData();
   }, []);
 
   return (
     <div>
-      <h1>Engineer Dashboard</h1>
-      {data ? (
+      
+     <div style={{ display: "flex" }}>
+        <Sidebar />
         <div>
-          <p>ID: {data.adminid}</p>
-          <p>Username: {data.name}</p>
-          <p>Email: {data.email}</p>
+
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+      </div>
     </div>
   );
 }

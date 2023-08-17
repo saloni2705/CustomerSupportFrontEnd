@@ -48,7 +48,7 @@ function LoginPage() {
         setLoggedIn(true);
         setUserData(user); // Store user data in state   
         const token = user.token; // Assuming the token is available in the user object
-       localStorage.setItem("token", token);
+       localStorage.setItem("adminid", user.id);
 
         if(user.roles[0] === "ROLE_CUSTOMER"){
           navigate("/");

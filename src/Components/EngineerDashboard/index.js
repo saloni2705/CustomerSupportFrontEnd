@@ -9,7 +9,10 @@ function  EngineerDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/auth/admin/6');
+        const response = await fetch('http://localhost:8080/auth/admin/1', {
+          credentials: 'include', // Set withCredentials to true
+        });
+  
         if (response.ok) {
           const responseData = await response.json();
           setData(responseData);
@@ -20,17 +23,17 @@ function  EngineerDashboard() {
         console.error('Error:', error);
       }
     };
-
+  
     fetchData();
   }, []);
 
   return (
     <div>
-      <h1>API Response Example</h1>
+      <h1>Engineer Dashboard</h1>
       {data ? (
         <div>
-          <p>ID: {data.id}</p>
-          <p>Username: {data.username}</p>
+          <p>ID: {data.adminid}</p>
+          <p>Username: {data.name}</p>
           <p>Email: {data.email}</p>
         </div>
       ) : (

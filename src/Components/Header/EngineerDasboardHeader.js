@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import TokenContext from "../../TokenContext";
 import { Link } from "react-router-dom";
 
-function Header() {
+function EngineerDashboardHeader() {
   const navigate = useNavigate();
 
   return (
@@ -45,4 +45,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default EngineerDashboardHeader;

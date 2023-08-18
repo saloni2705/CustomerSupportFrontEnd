@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./Components/Login/LoginPage";
 import Register from "./Components/Register/Register";
 import CustomerDashboard from "./Components/CustomerDashboard/CustomerDashboard";
-import EngineerDashboard from "./Components/EngineerDashboard";
+import EngineerDashboard from "./Components/EngineerDashboard/EngineerDasboard";
 import TokenContextProvider from "./TokenContext";
-import Header from "./Components/Header";// Import the Header component
-import { LandingHeader } from "./Components/LandingHeader"; // Import the LandingHeader component
+import Header from "./Components/Header/EngineerDasboardHeader"; 
+import { LandingHeader } from "./Components/LandingHeader"; 
 import { About } from "./Components/about";
 import { Services } from "./Components/service";
 import { Gallery } from "./Components/gallery";
-import { Testimonials } from "./Components/testimonials";
-import { Team } from "./Components/Team";
+import FAQComponent from "./Components/FAQComponent";
+import ChatComponent from "./Components/ChatComponent";
 import { Contact } from "./Components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
@@ -41,8 +41,7 @@ function App() {
   return (
     <TokenContextProvider>
       <Router>
-        {/* Use the Header component */}
-        <Header />
+        
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
@@ -65,6 +64,7 @@ function App() {
               />
             }
           />
+          <Route path="/faqs" element={<FAQComponent />} />
         </Routes>
       </Router>
     </TokenContextProvider>
@@ -77,8 +77,8 @@ const MainPage = ({ landingPageData }) => (
     <About data={landingPageData.About} />
     <Services data={landingPageData.Services} />
     <Gallery data={landingPageData.Gallery} />
-    <Testimonials data={landingPageData.Testimonials} />
-    <Team data={landingPageData.Team} />
+    <FAQComponent />
+    <ChatComponent />
     <Contact data={landingPageData.Contact} />
   </div>
 );

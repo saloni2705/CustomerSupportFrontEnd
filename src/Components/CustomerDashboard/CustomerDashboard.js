@@ -9,7 +9,7 @@ function  CustomerDashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/auth/customer/1', {
+        const response = await fetch('http://localhost:8080/auth/customer/7', {
           credentials: 'include', // Set withCredentials to true
         });
   
@@ -32,7 +32,7 @@ function  CustomerDashboard() {
       <h1>Customer Dashboard</h1>
       {data ? (
         <div>
-          <p>ID: {data.adminid}</p>
+          <p>ID: {data.customerid}</p>
           <p>Username: {data.name}</p>
           <p>Email: {data.email}</p>
         </div>
@@ -44,4 +44,4 @@ function  CustomerDashboard() {
 }
 
 
-export default CustomerDashboard;
+export default CustomerDashboard

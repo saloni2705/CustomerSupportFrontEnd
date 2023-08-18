@@ -51,7 +51,7 @@ function LoginPage() {
        localStorage.setItem("adminid", user.id);
 
         if(user.roles[0] === "ROLE_CUSTOMER"){
-          navigate("/");
+          navigate("/login/CustomerDashboard");
         } else if( user.roles[0] === "ROLE_ADMIN"){
           navigate("/login/EngineerDashboard");
         }

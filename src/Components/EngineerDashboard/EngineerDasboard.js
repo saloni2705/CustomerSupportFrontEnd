@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TokenContext } from "../../TokenContext";
 import Sidebar from "../Sidebar";
+import EngineerDashboardHeader from "../Header/EngineerDasboardHeader";
 
 function EngineerDashboard() {
   const [data, setData] = useState(null);
@@ -28,16 +29,14 @@ function EngineerDashboard() {
 
   return (
     <div>
-      
-     <div style={{ display: "flex" }}>
+      {window.location.pathname.startsWith("/login/EngineerDashboard") && (
+        <EngineerDashboardHeader />
+      )}
+      <div style={{ display: "flex" }}>
         <Sidebar />
-        <div>
-
-        </div>
       </div>
     </div>
   );
 }
-
 
 export default EngineerDashboard;

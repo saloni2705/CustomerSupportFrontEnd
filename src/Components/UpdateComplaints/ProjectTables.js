@@ -14,7 +14,6 @@ function ProjectTables() {
 
   useEffect(() => {
     fetchComplaints();
-    fetchCustomerNames();
   }, []);
 
   const fetchComplaints = async () => {
@@ -33,33 +32,6 @@ function ProjectTables() {
     const users = [user1, user2, user3, user4, user5];
     const randomIndex = Math.floor(Math.random() * users.length);
     return users[randomIndex];
-  };
-
-  const fetchCustomerNames = async () => {
-    try {
-      const customerIds = complaints.map((complaint) => complaint.customerid);
-
-      const customerInfoArray = await Promise.all(
-        customerIds.map(async (customerid) => {
-          const response = await fetch(`http://localhost:8080/auth/customer/${customerid}`, {
-            credentials: 'include',
-          });
-          const data = await response.json();
-          return {
-            customerid: customerid,
-            name: data.name,
-          };
-        })
-      );
-
-      const customerInfoMap = {};
-      customerInfoArray.forEach((info) => {
-        customerInfoMap[info.customerid] = info.name;
-      });
-      setCustomerNames(customerInfoMap);
-    } catch (error) {
-      console.error("Error:", error);
-    }
   };
 
   const formatDate = (dateString) => {
@@ -125,7 +97,7 @@ function ProjectTables() {
                             height="45"
                           />
                           <div className="ms-3">
-                            <span className="text-muted">{customerNames[complaint.customerid]}</span>
+                            <span className="text-muted">{complaint.customerName}</span>
                           </div>
                         </div>
                       </td>

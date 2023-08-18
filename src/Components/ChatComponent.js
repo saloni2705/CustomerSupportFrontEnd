@@ -59,7 +59,7 @@ const ChatComponent = () => {
         <div style={{ border: "1px solid #ddd", padding: "10px", minHeight: "200px" }}>
           {chatHistory.map((chat, index) => (
             <div key={index} style={{ marginBottom: "10px", textAlign: chat.role === "user" ? "right" : "left" }}>
-              <div style={{ backgroundColor: chat.role === "user" ? "#6094fc" : "#f0f0f0", color: chat.role === "user" ? "#fff" : "#333", padding: "8px 12px", borderRadius: "8px", display: "inline-block" }}>
+              <div style={{ backgroundColor: chat.role === "user" ? "#ac2358" : "#f0f0f0", color: chat.role === "user" ? "#fff" : "#333", padding: "8px 12px", borderRadius: "8px", display: "inline-block" }}>
                 {chat.content}
               </div>
             </div>
@@ -75,7 +75,7 @@ const ChatComponent = () => {
           onChange={handleInputChange}
           style={{ flex: "1", padding: "10px", fontSize: "16px", borderRadius: "4px" }}
         />
-        <button onClick={handleSend} style={{ marginLeft: "10px", padding: "10px 20px", fontSize: "16px", backgroundColor: "#6094fc", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer" }}>Send</button>
+        <button onClick={handleSend} style={{ marginLeft: "10px", padding: "10px 20px", fontSize: "16px", backgroundColor: "#ac2358", color: "#fff", border: "none", borderRadius: "4px", cursor: "pointer" }}>Send</button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { Link as RouterLink} from "react-router-dom"; //Different page scrolling
 
 function LandingNavbar() {
   return (
-    <nav style={{ backgroundColor: "#6094fc", padding: "15px 20px", boxShadow: "0 4px 6px rgba(104, 124, 252, 0.5)" }}>
+    <nav style={{ backgroundColor: "#ac2358", padding: "15px 20px", boxShadow: "0 4px 6px rgba(152,20,77,255)" }}>
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", justifyContent: "flex-end" }}>
         {/* Link to About section */}
         <li style={{ marginLeft: "20px" }}>

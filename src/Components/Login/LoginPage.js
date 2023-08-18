@@ -100,14 +100,15 @@ function LoginPage() {
                       setPassword(e.target.value);
                     }}/>
 
-              <MDBBtn className="mb-4 px-5" color='dark' size='lg' onClick={handleLogin}>Login</MDBBtn>
-              <div>
-              {failMessage && (
-                <div className="alert alert-fail" role="alert" style={{ backgroundColor: 'red', color: 'white' }}>
-                  {failMessage}
-                </div>
-              )}
-            </div>
+                  <MDBBtn className="mb-4 px-5" style={{backgroundColor: '#ac2358', borderColor: '#ac2358', transition: 'background-color 0.3s, border-color 0.3s'}}
+                           size='lg'onClick={handleLogin} onMouseOver={(e) => {
+                                       e.target.style.backgroundColor = '#98144d';
+                                       e.target.style.borderColor = '#98144d';
+                                              }}
+                            onMouseOut={(e) => {
+                                      e.target.style.backgroundColor = '#ac2358';
+                                      e.target.style.borderColor = '#ac2358';
+                                                }}> Login </MDBBtn>
               <a className="small text-muted" href="#!">Forgot password?</a>
               <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="http://localhost:3000/register" style={{color: '#393f81'}}>Register here</a></p>
 

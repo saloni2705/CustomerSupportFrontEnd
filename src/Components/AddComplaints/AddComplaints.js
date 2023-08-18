@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CustomerDashboardHeader from "../Header/CustomerDashboardHeader";
 import Sidebar from "../Sidebar";
 
 function AddComplaints() {

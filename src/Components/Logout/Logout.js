@@ -13,9 +13,9 @@ const Logout = () => {
           // Successful logout
           console.log("Logged out successfully");
           // Clear local storage
-          localStorage.removeItem("token");
+          localStorage.clear();
           // Redirect user to login page
-          window.location.href = "/login"; // You can adjust the path as needed
+          window.location.href = "/"; // You can adjust the path as needed
         } else {
           // Handle error
           console.error("Logout failed");

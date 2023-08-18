@@ -35,6 +35,7 @@ function LoginPage() {
 
     try {
       const response = await fetch(endpoint, {
+        credentials: `include`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,10 +49,10 @@ function LoginPage() {
         setLoggedIn(true);
         setUserData(user); // Store user data in state   
         const token = user.token; // Assuming the token is available in the user object
-       localStorage.setItem("adminid", user.id);
+       localStorage.setItem("id", user.id);
 
         if(user.roles[0] === "ROLE_CUSTOMER"){
-          navigate("/login/CustomerDashboard");
+          navigate("/");
         } else if( user.roles[0] === "ROLE_ADMIN"){
           navigate("/login/EngineerDashboard");
         }

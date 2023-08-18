@@ -20,6 +20,7 @@ import UpdateComplaints from './Components/UpdateComplaints/UpdateComplaints';
 import AddFAQsPage from "./Components/AddFAQ/AddFAQsPage";
 import Logout from "./Components/Logout/Logout";
 import "./App.css";
+import AddComplaints from "./Components/AddComplaints/AddComplaints";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -69,7 +70,7 @@ function App() {
           <Route path="/faqs" element={<FAQComponent />} />
           <Route path="/login/EngineerDashboard/postfaqs" element={<AddFAQsPage />} />
           <Route path="/login/EngineerDashboard/logout" element={<Logout />} />   
-           
+          <Route path="/AddComplaints" element={<AddComplaints />} />
         </Routes>
       </Router>
     </TokenContextProvider>

@@ -17,6 +17,8 @@ import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import { Table } from 'reactstrap';
 import UpdateComplaints from './Components/UpdateComplaints/UpdateComplaints';
+import AddFAQsPage from "./Components/AddFAQ/AddFAQsPage";
+import Logout from "./Components/Logout/Logout";
 import "./App.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -65,6 +67,9 @@ function App() {
             }
           />
           <Route path="/faqs" element={<FAQComponent />} />
+          <Route path="/login/EngineerDashboard/postfaqs" element={<AddFAQsPage />} />
+          <Route path="/login/EngineerDashboard/logout" element={<Logout />} />   
+           
         </Routes>
       </Router>
     </TokenContextProvider>

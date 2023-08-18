@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <div style={{ display: 'flex', height: '94vh', overflow: 'scroll initial' }}>
-      <CDBSidebar textColor="#ffffff" backgroundColor="#AE275F" breakpoint={720}  >
+      <CDBSidebar textColor="#ffffff" backgroundColor="#ac2358" breakpoint={720}  >
       <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Engineer</CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
@@ -21,15 +21,16 @@ const Sidebar = () => {
             <NavLink exact to="/login/EngineerDashboard/updateComplaints" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">Update Complaints</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/login/ManagerDashboard/leaverequests" activeClassName="activeClicked">
+            <NavLink exact to="/login/EngineerDashboard/postfaqs" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">Post FAQ's</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/login/ManagerDashboard/editinfo" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Edit Profile</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/login/ManagerDashboard/logout" activeClassName="activeClicked">
+            <NavLink exact to="/login/EngineerDashboard/logout" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">logout</CDBSidebarMenuItem>
             </NavLink>
+            
           </CDBSidebarMenu>
         </CDBSidebarContent>
 

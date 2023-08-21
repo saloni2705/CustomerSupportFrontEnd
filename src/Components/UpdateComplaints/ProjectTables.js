@@ -13,8 +13,12 @@ function ProjectTables() {
   const [statusMessage, setStatusMessage] = useState("");
 
   useEffect(() => {
-    fetchComplaints();
-  }, []);
+    if (adminid) {
+      fetchComplaints();
+    } else {
+      console.log('adminid is missing. Cannot fetch complaints.');
+    }
+  }, [adminid]);
 
   const fetchComplaints = async () => {
     try {

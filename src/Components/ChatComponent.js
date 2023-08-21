@@ -68,7 +68,7 @@ const ChatComponent = () => {
       </div>
       
       <div style={{ display: "flex" }}>
-        <input
+      <input
           type="text"
           placeholder="Type your message..."
           value={userInput}

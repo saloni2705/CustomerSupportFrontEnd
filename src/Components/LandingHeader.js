@@ -7,7 +7,7 @@ export const LandingHeader = (props) => {
   return (
     <header id="header">
       {/* Include the LandingNavbar here */}
-      <LandingNavbar />
+      <LandingNavbar loggedIn={props.loggedIn}  />
       
       <div className="intro">
         <div className="overlay">

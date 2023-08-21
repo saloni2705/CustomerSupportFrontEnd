@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react'; // Added 'useEffect'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LoginPage.css';
-import  { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { TokenContext } from "../../TokenContext";
-
+import { useNavigate } from 'react-router-dom';
+import { TokenContext } from '../../TokenContext';
 
 import {
   MDBBtn,
@@ -15,59 +13,68 @@ import {
   MDBRow,
   MDBCol,
   MDBIcon,
-  MDBInput
-}
-from 'mdb-react-ui-kit';
-
+  MDBInput,
+} from 'mdb-react-ui-kit';
 
 function LoginPage() {
   const navigate = useNavigate();
   const { setUserData } = useContext(TokenContext);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [failMessage, setFailMessage ] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [failMessage, setFailMessage] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    console.log('Effect triggered. Logged in:', loggedIn);
+
+    if (loggedIn) {
+      console.log('User is logged in:', loggedIn);
+      const user = JSON.parse(localStorage.getItem('user')); // Assuming you're storing user data in localStorage
+      console.log('User data:', user);
+      if (user.roles[0] === 'ROLE_CUSTOMER') {
+        navigate('/');
+      } else if (user.roles[0] === 'ROLE_ADMIN') {
+        localStorage.setItem("adminid", user.id);
+        navigate('/login/EngineerDashboard');
+      }
+    }
+  }, [loggedIn]);
+
   const handleLogin = async () => {
-    let endpoint = "http://localhost:8080/auth/admin/signin"; // Default endpoint
+    let endpoint = 'http://localhost:8080/auth/admin/signin'; // Default endpoint
     const loginData = { username, password };
     setUsername(username);
 
     try {
       const response = await fetch(endpoint, {
-        credentials: `include`,
-        method: "POST",
+        method: 'POST',
+        credentials: 'include',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(loginData),
-        
       });
 
       if (response.ok) {
         const user = await response.json();
+        console.log("Logged in user:", user);
+        setUserData(user);
+        localStorage.setItem("user", JSON.stringify(user));
         setLoggedIn(true);
-        setUserData(user); // Store user data in state   
-        const token = user.token; // Assuming the token is available in the user object
-       localStorage.setItem("id", user.id);
-
-        if(user.roles[0] === "ROLE_CUSTOMER"){
-          navigate("/");
-        } else if( user.roles[0] === "ROLE_ADMIN"){
-          navigate("/login/EngineerDashboard");
-        }
-        
+        localStorage.setItem("loggedIn", "true");
       } else {
-        setFailMessage("login failed"); 
-        setTimeout(() => setFailMessage(""), 1000);
+        const errorResponse = await response.json(); // Parse error response
+        setFailMessage(errorResponse.message); // Set the error message
+        setTimeout(() => setFailMessage(""), 2000)
       }
+      
     } catch (error) {
-      document.write(`Error occurred: ${error}`);
+      console.error('Error occurred:', error);
     }
   };
 
   if (loggedIn) {
-    return null; 
+    return null;
   }
 
   return (
@@ -101,15 +108,14 @@ function LoginPage() {
                       setPassword(e.target.value);
                     }}/>
 
-                  <MDBBtn className="mb-4 px-5" style={{backgroundColor: '#ac2358', borderColor: '#ac2358', transition: 'background-color 0.3s, border-color 0.3s'}}
-                           size='lg'onClick={handleLogin} onMouseOver={(e) => {
-                                       e.target.style.backgroundColor = '#98144d';
-                                       e.target.style.borderColor = '#98144d';
-                                              }}
-                            onMouseOut={(e) => {
-                                      e.target.style.backgroundColor = '#ac2358';
-                                      e.target.style.borderColor = '#ac2358';
-                                                }}> Login </MDBBtn>
+              <MDBBtn className="mb-4 px-5" color='dark' size='lg' onClick={handleLogin}>Login</MDBBtn>
+              <div>
+              {failMessage && (
+                 <div className="alert alert-fail" role="alert" style={{ backgroundColor: 'red', color: 'white' }}>
+                 {failMessage}
+               </div>
+              )}
+            </div>
               <a className="small text-muted" href="#!">Forgot password?</a>
               <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="http://localhost:3000/register" style={{color: '#393f81'}}>Register here</a></p>
 

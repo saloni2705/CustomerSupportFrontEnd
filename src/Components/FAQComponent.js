@@ -74,8 +74,8 @@ const FAQComponent = () => {
                 }}
               >
                 <div className="faq-content">
-                  <p style={{ fontWeight: "bold" }}>{faq.question}</p>
-                  <div style={{ fontSize: "13px" }}>{faq.answer}</div>
+                <p style={{ fontWeight: "bold", fontSize: "15px" }}>{faq.question}</p>
+                  <div style={{ fontSize: "15px" }}>{faq.answer}</div>
                 </div>
               </div>
             </div>

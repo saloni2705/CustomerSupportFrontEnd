@@ -30,6 +30,8 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [landingPageData, setLandingPageData] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false); // Initial value set to false
+  const [userData, setUserData] = useState(null); // Define userData state
 
   useEffect(() => {
     setLandingPageData(JsonData);
@@ -38,6 +40,14 @@ function App() {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
+    }
+
+    // Retrieve the user data from local storage
+    const storedUserData = JSON.parse(localStorage.getItem("user"));
+    if (storedUserData) {
+      setUserData(storedUserData);
+      setLoggedIn(true); 
+      
     }
   }, []);
 
@@ -64,22 +74,24 @@ function App() {
                 landingPageData={landingPageData}
                 token={token}
                 setToken={setToken}
+                loggedIn={loggedIn}
+                userData={userData} // Pass the userData here
               />
             }
           />
           <Route path="/faqs" element={<FAQComponent />} />
           <Route path="/login/EngineerDashboard/postfaqs" element={<AddFAQsPage />} />
           <Route path="/login/EngineerDashboard/logout" element={<Logout />} />   
-          <Route path="/AddComplaints" element={<AddComplaints />} />
+          <Route path="/AddComplaints" element={<AddComplaints userData={userData} />} />
         </Routes>
       </Router>
     </TokenContextProvider>
   );
 }
 
-const MainPage = ({ landingPageData }) => (
+const MainPage = ({ landingPageData, loggedIn, userData }) => (
   <div>
-    <LandingHeader data={landingPageData.LandingHeader} />
+    <LandingHeader data={landingPageData.LandingHeader} loggedIn={loggedIn} userData={userData} />
     <About data={landingPageData.About} />
     <Services data={landingPageData.Services} />
     <Gallery data={landingPageData.Gallery} />

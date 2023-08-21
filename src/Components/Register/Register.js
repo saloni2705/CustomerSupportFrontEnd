@@ -34,6 +34,26 @@ function Register() {
       let endpoint = "http://localhost:8080/auth/customer/signup"; // Default endpoint
   
       const registerData = { username, email, phone_number, password};
+      if (username === '') {
+        setFailMessage('Username cannot be empty.');
+        return;
+      }
+  
+      if (!email.includes('@')) {
+        setFailMessage('Invalid email address.');
+        return;
+      }
+  
+      if (phone_number.length !== 10 || !/^\d+$/.test(phone_number)) {
+        setFailMessage('Phone number should be a 10-digit number.');
+        return;
+      }
+  
+      if (password === '') {
+        setFailMessage('Password cannot be empty.');
+        return;
+      }
+      setFailMessage('');
 
       try {
         const response = await fetch(endpoint, {
@@ -53,8 +73,9 @@ function Register() {
           // You can redirect the user to a login page or perform any other actions here
           
         } else {
-          setFailMessage("Registration failed"); // Set the success message
-          setTimeout(() => setFailMessage(""), 1000);
+          const errorResponse = await response.json(); // Parse error response
+          setFailMessage(errorResponse.message); // Set the error message
+          setTimeout(() => setFailMessage(""), 2000)
         }
       } catch (error) {
         document.write(`Error occurred: ${error}`);

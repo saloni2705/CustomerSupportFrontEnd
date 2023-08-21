@@ -1,0 +1,66 @@
+/* Add these styles to your existing stylesheet or create a new one */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .faq-item {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-item summary {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  .faq-item p {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    background-color: #f9f9f9; /* Slightly different shade of white for the answer */
+  }
+  
+  .faq-item summary::before {
+    content: "Q";
+    position: absolute;
+    left: -25px;
+    font-size: 24px;
+  }
+  
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 15px;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .faq-item[open] summary::after {
+    content: "-";
+    transform: rotate(45deg);
+  }
+
+  .section-title {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }

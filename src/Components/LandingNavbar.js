@@ -1,6 +1,8 @@
 import React ,{ useState }from "react";
 import { Link as ScrollLink} from "react-scroll"; // Same page scrolling
 import { Link as RouterLink} from "react-router-dom"; //Different page scrolling
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function LandingNavbar({ loggedIn }) {
    const [showUserDropdown, setShowUserDropdown] = useState(false);
@@ -53,7 +55,7 @@ function LandingNavbar({ loggedIn }) {
             fontSize: "16px",
           }}
         >
-          Post Complaint
+          Complaints
         </RouterLink>
        </li> 
         {/* Link to Contact section */}
@@ -62,6 +64,8 @@ function LandingNavbar({ loggedIn }) {
             Contact
           </ScrollLink>
         </li>
+
+        <li style={{ marginLeft: "650px" }}></li>
     
         {/* Render user-specific options */}
         {loggedIn ? (

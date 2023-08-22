@@ -1,26 +1,42 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext , useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import './AddComplaints.css';
+import NavbarComplaints from "../NavbarComplaints/NavbarComplaints";
 
 function AddComplaints({ userData }) {
   const navigate = useNavigate();
   const[description, setDescription] = useState("");
   const [successMessage, setSuccessMessage] = useState(""); 
   const [errorMessage, setErrorMessage] = useState("");
-  const customerid = localStorage.getItem('id');
+  const customerid = localStorage.getItem('customerid');
   const [response, setResponse] = useState("");
   const[faqs, setFaqs] = useState([]);
 
+  useEffect(() => {
+    // Fetch FAQs from the server
+    fetch("http://localhost:8080/auth/customer/getAllFaqs")
+      .then((response) => response.json())
+      .then((data) => {
+        setFaqs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching FAQs:", error);
+      });
+  }, []);
 
   const handleAdd = (e) => {
     e.preventDefault();
-
+    if (!description) {
+      setErrorMessage("Description cannot be empty.");
+      return;
+    }
     const requestBody = {
         description: description // Add other fields if needed
       };
 
-    fetch(`http://localhost:8080/auth/customer/${userData.id}/add-complaint`, {
+
+    fetch(`http://localhost:8080/auth/customer/${customerid}/add-complaint`, {
       method: "POST",
       credentials: 'include',
       headers: {
@@ -49,18 +65,18 @@ function AddComplaints({ userData }) {
     });
 };
     return (
+      <div >
+        <NavbarComplaints />
+
       <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-3 p-0 sidebar">
-          <Sidebar />
         </div>
-        <div className="col-md-9 p-4">
+        <div className="col-md-12 p-4">
           <div
             className="bg-white p-5 rounded shadow"
             style={{
               backgroundColor: "#ffffff",
               maxWidth: "600px",
-              margin: "30px auto",
+              margin: "5px auto",
               padding: "20px",
               borderRadius: "10px",
               border: "1px solid #ddd"
@@ -126,22 +142,21 @@ function AddComplaints({ userData }) {
                 <h2>FAQs</h2>
               </div>
               <div className="accordion">
-                {faqs && faqs.length > 0 ? (
-                  faqs.map((faq, index) => (
-                    <details key={index} className="faq-item">
-                      <summary>{faq.question}</summary>
-                      <p>{faq.answer}</p>
-                    </details>
-                  ))
-                ) : (
-                  <p>No FAQs available.</p>
-                )}
+              {faqs && faqs.length > 0 ? (
+                faqs.map((faq, index) => (
+                  <details key={index} className="faq-item">
+                    <summary>{faq.question}</summary>
+                    <p>{faq.answer}</p>
+                  </details>
+                ))
+              ) : (
+                <p>No FAQs match your search.</p>
+              )}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

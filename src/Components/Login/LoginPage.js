@@ -32,6 +32,7 @@ function LoginPage() {
       const user = JSON.parse(localStorage.getItem('user')); // Assuming you're storing user data in localStorage
       console.log('User data:', user);
       if (user.roles[0] === 'ROLE_CUSTOMER') {
+        localStorage.setItem("customerid", user.id);
         navigate('/');
       } else if (user.roles[0] === 'ROLE_ADMIN') {
         localStorage.setItem("adminid", user.id);
@@ -116,7 +117,7 @@ function LoginPage() {
                </div>
               )}
             </div>
-              <a className="small text-muted" href="#!">Forgot password?</a>
+              <a className="small text-muted" href="/forgot-password">Forgot password?</a>
               <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="http://localhost:3000/register" style={{color: '#393f81'}}>Register here</a></p>
 
               <div className='d-flex flex-row justify-content-start'>

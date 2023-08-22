@@ -24,7 +24,7 @@ const Sidebar = () => {
             <NavLink exact to="/login/EngineerDashboard/postfaqs" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table">Post FAQ's</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/login/ManagerDashboard/editinfo" activeClassName="activeClicked">
+            <NavLink exact to="/updateAdmin" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Edit Profile</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/login/EngineerDashboard/logout" activeClassName="activeClicked">

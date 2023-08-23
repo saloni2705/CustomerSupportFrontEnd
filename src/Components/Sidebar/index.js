@@ -18,7 +18,7 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/login/EngineerDashboard/updateComplaints" activeClassName="activeClicked">
+            <NavLink exact to="/login/EngineerDashboard" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table" style={{ color: '#524545' }}>Update Complaints</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/login/EngineerDashboard/postfaqs" activeClassName="activeClicked">

@@ -51,6 +51,7 @@ function LandingNavbar({ loggedIn }) {
           </ScrollLink>
         </li>
         {/*Link to Post Complaint Section*/}
+        {loggedIn && ( 
         <li style={{ marginLeft: "20px" }}>
         <RouterLink
           to="/AddComplaints" 
@@ -64,6 +65,7 @@ function LandingNavbar({ loggedIn }) {
           Complaints
         </RouterLink>
        </li> 
+          )}
         {/*Link to Contact section*/}
         <li style={{ marginLeft: "20px" }}>
           <ScrollLink to="contact" smooth={true} duration={1000} style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>

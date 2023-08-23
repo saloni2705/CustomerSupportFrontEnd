@@ -71,7 +71,6 @@ function App() {
             path="/login/EngineerDashboard"
             element={<EngineerDashboard />}
           />
-          <Route path="/login/EngineerDashboard/updateComplaints" element={<UpdateComplaints/>} />
           <Route
             path="/"
             element={

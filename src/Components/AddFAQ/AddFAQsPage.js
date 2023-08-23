@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import Sidebar from '../Sidebar';
+import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function AddFAQsPage() {
   const [faq, setFAQ] = useState({
@@ -56,47 +60,77 @@ function AddFAQsPage() {
   };
 
   return (
+    <div>
+    <Navbar style={{ backgroundColor: "#98144d", padding: "5px 20px", position: "relative" }} expand="lg" variant="dark">
+      <Link to="/" className="navbar-brand">
+        <img
+          src="/img/Axis Bank.png"
+          width="150"
+          height="45"
+          className="d-inline-block align-top"
+          alt="logo"
+        />
+      </Link>
+      <Link to="/" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
+            <FontAwesomeIcon icon={faHome} style={{ marginLeft: "1210px" }} />
+          </Link>
+      
+    </Navbar>
     <div className="container-fluid">
-  <div className="row">
-    <div className="col-md-3 p-0 sidebar">
-      <Sidebar />
-    </div>
-    <div className="col-md-9 p-4">
-      <div
-        className="bg-white p-5 rounded shadow"
-        style={{
-          backgroundColor: "#ffffff",
-          maxWidth: "800px", 
-          margin: "0 auto",
-          padding: "30px", 
-          borderRadius: "10px",
-          border: "1px solid #ddd"
-        }}
-      >
-        <h1 className="mb-4" style={{ color: "#ac2358" }}>
-          Add FAQ
-        </h1>
-        {successMessage && (
-          <p className="text-success" style={{ color: "#333" }}>
-            {successMessage}
-          </p>
-        )}
-        {errorMessage && (
-          <p className="text-danger" style={{ color: "red" }}>
-            {errorMessage}
-          </p>
-        )}
-        <form onSubmit={handleFormSubmit}>
-          <div className="mb-3">
-            <input
-              type="text"
-              className="form-control"
-              value={faq.faqType}
-              placeholder="FAQ Type"
-              onChange={(e) => handleInputChange("faqType", e.target.value)}
-              style={{ fontSize: "16px" }} 
-            />
-          </div>
+      <div className="row">
+        <div className="col-md-3 p-0 sidebar">
+          <Sidebar />
+        </div>
+        <div className="col-md-9 p-4">
+          <div
+            className="bg-white p-5 rounded shadow"
+            style={{
+              backgroundColor: "#ffffff",
+              maxWidth: "800px",
+              margin: "0 auto",
+              padding: "30px",
+              borderRadius: "10px",
+              border: "1px solid #ddd"
+            }}
+          >
+            <h1 className="mb-4" style={{ color: "#ac2358" }}>
+              Add FAQ
+            </h1>
+            {successMessage && (
+              <p className="text-success" style={{ color: "#333" }}>
+                {successMessage}
+              </p>
+            )}
+            {errorMessage && (
+              <p className="text-danger" style={{ color: "red" }}>
+                {errorMessage}
+              </p>
+            )}
+            <form onSubmit={handleFormSubmit}>
+              <div className="mb-3">
+              <div style={{ position: "relative" }}>
+                <select
+                  className="form-control"
+                  value={faq.faqType}
+                  onChange={(e) => handleInputChange("faqType", e.target.value)}
+                  style={{ fontSize: "16px", padding: "10px" }}
+                >
+                  <option value="">Select FAQ Type</option>
+                  <option value="Login and Account">Login and Account</option>
+                  <option value="Transaction">Transaction</option>
+                  <option value="Balance">Balance</option>
+                  <option value="Card and ATM">Card and ATM</option>
+                  <option value="Personal Information">Personal Information</option>
+                  <option value="Loans and Mortgages">Loans and Mortgages</option>
+                  <option value="Technical Issues">Technical Issues</option>
+                  <option value="Account Maintenance">Account Maintenance</option>
+                  <option value="Security">Security</option>
+                  <option value="Account Closure">Account Closure</option>
+                  <option value="Billing and Fees">Billing and Fees</option>
+                </select>
+                <div style={{ position: "absolute", top: "50%", right: "10px", transform: "translateY(-50%)" }}>&#9660;</div>
+              </div>
+              </div>
           <div className="mb-3">
             <input
               type="text"
@@ -136,8 +170,7 @@ function AddFAQsPage() {
     </div>
   </div>
 </div>
-
-
+</div>
   );
 }
 

@@ -3,10 +3,10 @@ import Sidebar from '../Sidebar';
 import ProjectTables from './ProjectTables';
 import { Row, Col, Table, Card, CardTitle, CardBody } from "reactstrap";
 
+
 const UpdateComplaints = () => {
   return (
-    <div>
-      
+    
       <div style={{ display: "flex"}}>
         {/* Sidebar with padding */}
         <Sidebar style={{ padding: "80px" }} />
@@ -16,7 +16,7 @@ const UpdateComplaints = () => {
           <ProjectTables />
         </Col>
       </div>
-    </div>
+    
   );
 };
 

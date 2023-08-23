@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import user2 from "../../assets/images/users/user2.jpg";
+import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   MDBCol,
   MDBContainer,
@@ -83,6 +87,22 @@ function UpdateUserPage() {
   };
 
   return (
+    <div>
+      <Navbar style={{ backgroundColor: "#98144d", padding: "5px 20px", position: "relative" }} expand="lg" variant="dark">
+      <Link to="/" className="navbar-brand">
+        <img
+          src="/img/Axis Bank.png"
+          width="150"
+          height="45"
+          className="d-inline-block align-top"
+          alt="logo"
+        />
+      </Link>
+      <Link to="/" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
+            <FontAwesomeIcon icon={faHome} style={{ marginLeft: "1210px" }} />
+          </Link>
+      
+    </Navbar>
     <section className="vh-100 " style={{ backgroundColor: '#f4f5f7' }}>
       <MDBContainer className="py-5">
         <MDBRow className="justify-content-center">
@@ -93,7 +113,7 @@ function UpdateUserPage() {
                     borderTopLeftRadius: '.5rem',
                     borderBottomLeftRadius: '.5rem',
                     background: 'rgb(238,174,202)',
-                    background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,165,233,1) 100%)'
+                    background: `radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(228, 228, 228, 1) 100%`
                     }}>
                   <MDBCardImage
                     src={user2}
@@ -159,6 +179,7 @@ function UpdateUserPage() {
         </MDBRow>
       </MDBContainer>
     </section>
+    </div>
   );
 }
 

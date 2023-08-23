@@ -1,39 +1,45 @@
-import React ,{ useState }from "react";
-import { Link as ScrollLink} from "react-scroll"; // Same page scrolling
-import { NavLink, Link as RouterLink} from "react-router-dom"; //Different page scrolling
+import React, { useState } from "react";
+import { NavLink, Link  } from "react-router-dom";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Navbar } from "react-bootstrap";
 
 function NavbarComplaints({ loggedIn }) {
-   const [showUserDropdown, setShowUserDropdown] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
 
   const toggleUserDropdown = () => {
     setShowUserDropdown(!showUserDropdown);
   };
 
   return (
-    <nav style={{ backgroundColor: "#ac2358", padding: "15px 20px", boxShadow: "0 4px 6px rgba(152, 20, 77, 0.3)"  }}>
-      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", justifyContent: "flex-end" }}>
-        {/* Link to ViewComplaints */}
-        <li style={{ marginLeft: "20px" }}>
+    <Navbar style={{ backgroundColor: "#98144d", padding: "5px 20px", position: "relative" }} expand="lg" variant="dark">
+      <Link to="/" className="navbar-brand">
+        <img
+          src="/img/Axis Bank.png"
+          width="150"
+          height="45"
+          className="d-inline-block align-top"
+          alt="logo"
+        />
+      </Link>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", alignItems: "center" }}>
+        <li style={{ marginRight: "20px" }}>
           <NavLink to="/ViewComplaints" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
             View Complaints
           </NavLink>
         </li>
-        {/* Link to AddComplaints */}
-        <li style={{ marginLeft: "20px" }}>
+        <li style={{ marginRight: "20px" }}>
           <NavLink to="/AddComplaints" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
             Add Complaints
           </NavLink>
         </li>
-        {/* Add some space from the left corner */}
-        <li style={{ marginLeft: "auto" }}></li>
-        <NavLink to="/" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
-            <FontAwesomeIcon icon={faHome} style={{ marginRight: "5px" }} />
-          </NavLink>
-          <li style={{ marginLeft: "70px" }}></li>
+        <li>
+          <Link to="/" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
+            <FontAwesomeIcon icon={faHome} style={{ marginLeft: "900px" }} />
+          </Link>
+        </li>
       </ul>
-    </nav>
+    </Navbar>
   );
 }
 

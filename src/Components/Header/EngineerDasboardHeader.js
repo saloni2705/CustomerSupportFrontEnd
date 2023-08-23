@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function EngineerDashboardHeader() {
   return (
@@ -14,6 +16,9 @@ function EngineerDashboardHeader() {
           alt="logo"
         />
       </Link>
+      <Link to="/" style={{ color: "#fff", textDecoration: "none", transition: "color 0.3s", fontSize: "16px" }}>
+            <FontAwesomeIcon icon={faHome} style={{ marginLeft: "1210px" }} />
+          </Link>
       
     </Navbar>
   );

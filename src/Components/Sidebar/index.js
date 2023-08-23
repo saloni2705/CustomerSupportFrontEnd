@@ -13,22 +13,22 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
-      <CDBSidebar textColor="#ffffff" backgroundColor="#ac2358" breakpoint={720}  >
+      <CDBSidebar textColor="#524545" backgroundColor="#e4e4e4" breakpoint={720}  >
       <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Engineer</CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
             <NavLink exact to="/login/EngineerDashboard/updateComplaints" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Update Complaints</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="table" style={{ color: '#524545' }}>Update Complaints</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/login/EngineerDashboard/postfaqs" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Post FAQ's</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="table" style={{ color: '#524545' }}>Post FAQ's</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/updateAdmin" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Edit Profile</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="user" style={{ color: '#524545' }}>Edit Profile</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/login/EngineerDashboard/logout" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">logout</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="user" style={{ color: '#524545' }}>Logout</CDBSidebarMenuItem>
             </NavLink>
             
           </CDBSidebarMenu>

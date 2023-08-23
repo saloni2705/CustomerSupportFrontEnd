@@ -83,13 +83,18 @@ function UpdateUserPage() {
   };
 
   return (
-    <section className="vh-100" style={{ backgroundColor: '#f4f5f7' }}>
+    <section className="vh-100 " style={{ backgroundColor: '#f4f5f7' }}>
       <MDBContainer className="py-5">
         <MDBRow className="justify-content-center">
           <MDBCol lg="8">
-            <MDBCard className="mb-3" style={{ borderRadius: '.5rem', backgroundColor: '#fff' }}>
+            <MDBCard className="mb-3" style={{ borderRadius: '.5rem', backgroundColor: '#fff', width: '100%', padding: '30px 20px', minHeight: '460px', fontSize: '18px' }}> {/* Adjust fontSize */}
               <MDBRow className="g-0">
-                <MDBCol md="4" className="gradient-custom text-center text-white">
+              <MDBCol md="4" className="gradient-custom text-center text-white"style={{
+                    borderTopLeftRadius: '.5rem',
+                    borderBottomLeftRadius: '.5rem',
+                    background: 'rgb(238,174,202)',
+                    background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,165,233,1) 100%)'
+                    }}>
                   <MDBCardImage
                     src={user2}
                     alt="Avatar"
@@ -97,41 +102,52 @@ function UpdateUserPage() {
                     style={{ width: '80px' }}
                     fluid
                   />
-                  <MDBTypography tag="h5" className="text-dark">
+                  <MDBTypography tag="h5" className="text-dark" style={{ fontSize: '24px' }}> {/* Adjust fontSize */}
                     {userProfileData.name}
                   </MDBTypography>
-                  <MDBIcon far icon="edit mb-5" />
+                  <MDBIcon far icon="edit mb-5" style={{ fontSize: '36px' }} /> {/* Adjust fontSize */}
                 </MDBCol>
                 <MDBCol md="8">
                   <MDBCardBody className="p-4">
-                    <MDBTypography tag="h6">Information</MDBTypography>
+                    <MDBTypography tag="h6" style={{ fontSize: '20px' }}> {/* Adjust fontSize */}
+                      Information
+                    </MDBTypography>
                     <hr className="mt-0 mb-4" />
-                    <MDBTypography tag="h6">Name</MDBTypography>
+                    <MDBTypography tag="h6" style={{ fontSize: '20px' }}> {/* Adjust fontSize */}
+                      Name
+                    </MDBTypography>
                     <input
                       type="text"
                       value={userProfileData.name}
                       onChange={(e) => setUserProfileData({ ...userProfileData, name: e.target.value })}
                       className="form-control mb-3"
+                      style={{ fontSize: '16px' }} 
                     />
-                    <MDBTypography tag="h6">Email</MDBTypography>
+                    <MDBTypography tag="h6" style={{ fontSize: '20px' }}> {/* Adjust fontSize */}
+                      Email
+                    </MDBTypography>
                     <input
                       type="text"
                       value={userProfileData.email}
                       onChange={(e) => setUserProfileData({ ...userProfileData, email: e.target.value })}
                       className="form-control mb-3"
+                      style={{ fontSize: '16px' }} 
                     />
-                    <MDBTypography tag="h6">Phone</MDBTypography>
+                    <MDBTypography tag="h6" style={{ fontSize: '20px' }}> {/* Adjust fontSize */}
+                      Phone
+                    </MDBTypography>
                     <input
                       type="text"
                       value={userProfileData.phoneNumber}
                       onChange={(e) => setUserProfileData({ ...userProfileData, phoneNumber: e.target.value })}
                       className="form-control mb-4"
+                      style={{ fontSize: '16px' }} 
                     />
-                    <button onClick={handleUpdateUserInfo} className="btn btn-primary">
+                    <button onClick={handleUpdateUserInfo} className="btn btn-primary" style={{ fontSize: '18px' }}> {/* Adjust fontSize */}
                       Update
                     </button>
                     {updateSuccess && (
-                      <div className="mt-3 alert alert-success" role="alert">
+                      <div className="mt-3 alert alert-success" role="alert" style={{ fontSize: '18px' }}> {/* Adjust fontSize */}
                         User details updated successfully!
                       </div>
                     )}
@@ -147,7 +163,3 @@ function UpdateUserPage() {
 }
 
 export default UpdateUserPage;
-
-
-
-

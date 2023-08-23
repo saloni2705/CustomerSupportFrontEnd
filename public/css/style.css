@@ -460,59 +460,70 @@ header .intro-text {
 /* Contact Section */
 #contact {
   padding: 100px 0 60px;
-  background: linear-gradient(to right, #98144d 0%, #ac2358 100%);
-  color: rgba(255, 255, 255, 0.75);
+  background: #e4e4e4;
+  color: #000;
 }
+
 #contact .section-title {
   margin-bottom: 40px;
 }
+
 #contact .section-title p {
   font-size: 16px;
 }
+
 #contact h2 {
-  color: #fff;
+  color: #524545;
   margin-top: 10px;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
+
 #contact .section-title h2::after {
   position: absolute;
   content: "";
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.6);
   height: 4px;
   width: 60px;
   bottom: 0;
   left: 30px;
 }
+
 #contact h3 {
-  color: #fff;
+  color: #524545;
   margin-top: 80px;
   margin-bottom: 25px;
   padding-bottom: 20px;
   font-weight: 400;
 }
+
 #contact form {
   padding-top: 20px;
 }
+
 #contact .text-danger {
   color: #cc0033;
   text-align: left;
 }
+
 #contact .btn-custom {
   margin: 30px 0;
   background: transparent;
   border: 2px solid #fff;
 }
+
 #contact .btn-custom:hover {
   color: #40051d;
   background: #fff;
 }
+
 label {
   font-size: 12px;
   font-weight: 400;
   font-family: "Open Sans", sans-serif;
   float: left;
 }
+
 #contact .form-control {
   display: block;
   width: 100%;
@@ -530,38 +541,46 @@ label {
   -o-transition: none;
   transition: none;
 }
+
 #contact .form-control:focus {
   border-color: #999;
   outline: 0;
   -webkit-box-shadow: transparent;
   box-shadow: transparent;
 }
+
 .form-control::-webkit-input-placeholder {
   color: #777;
 }
+
 .form-control:-moz-placeholder {
   color: #777;
 }
+
 .form-control::-moz-placeholder {
   color: #777;
 }
+
 .form-control:-ms-input-placeholder {
   color: #777;
 }
+
 #contact .contact-item {
   margin: 20px 0;
 }
+
 #contact .contact-item span {
-  color: rgba(255, 255, 255, 1);
+  color: #524545;
   margin-bottom: 10px;
   display: block;
 }
+
 #contact .contact-item i.fa {
   margin-right: 10px;
 }
 
 #contact .social {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid grey;
   padding-top: 50px;
   margin-top: 50px;
   text-align: center;
@@ -573,37 +592,38 @@ label {
 }
 
 #contact .social i.fab {
-  font-size: 25px; /* Adjust the size as needed */
+  font-size: 25px;
   width: 60px;
   height: 60px;
   line-height: 60px;
   text-align: center;
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid #818181;
+  color: #818181;
   border-radius: 50%;
   transition: all 0.3s;
 }
 
 #contact .social i.fab:hover {
-  color: #ac2358;
-  background: #fff;
+  color: #524545;
+  background: #e4e4e4;
 }
+
 
 
 /* Footer Section*/
 #footer {
-  background: #f6f6f6;
-  padding: 30px 0;
+  background: #484444;
+  padding: 10px 0;
 }
 #footer p {
   color: #888;
   font-size: 14px;
 }
 #footer a {
-  color: #ac2358;
+  color: #fff;
 }
 #footer a:hover {
-  border-bottom: 2px solid #ac2358;
+  border-bottom: 2px solid #fff;
 }
 
 @media (max-width: 768px) {

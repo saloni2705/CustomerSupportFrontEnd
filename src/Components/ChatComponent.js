@@ -56,7 +56,7 @@ const ChatComponent = () => {
     <div id="chat-component" style={{ backgroundColor: "#ffffff", maxWidth: "600px", margin: "0 auto", padding: "20px", borderRadius: "10px" }}>
       <div style={{ marginBottom: "20px" }}>
         
-        <div style={{ border: "1px solid #ddd", padding: "10px", minHeight: "200px" }}>
+        <div style={{ border: "1px solid #ddd", padding: "10px", minHeight: "200px", fontSize: "16px" }}>
           {chatHistory.map((chat, index) => (
             <div key={index} style={{ marginBottom: "10px", textAlign: chat.role === "user" ? "right" : "left" }}>
               <div style={{ backgroundColor: chat.role === "user" ? "#ac2358" : "#f0f0f0", color: chat.role === "user" ? "#fff" : "#333", padding: "8px 12px", borderRadius: "8px", display: "inline-block" }}>

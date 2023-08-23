@@ -10,6 +10,7 @@ function ComplaintTables() {
   const [rating, setRating] = useState(""); 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredComplaints, setFilteredComplaints] = useState([]);
+  const currentDate = new Date();
 
   useEffect(() => {
     fetchComplaints();
@@ -43,11 +44,26 @@ function ComplaintTables() {
   };
 
 
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+  const formatEndDate = (dateString, complaintType) => {
+    const options = { month: 'short', day: 'numeric'};
+    let EndDate = new Date(dateString);
+
+    if (complaintType === "Level 2") {
+      EndDate.setDate(currentDate.getDate() + 1);
+    } else if (complaintType === "Level 3") {
+      EndDate.setDate(currentDate.getDate() + 2);
+    }
+  
+    return currentDate.toLocaleDateString(undefined, options);
   };
 
+  const formatStartDate = (dateString) => {
+    const options = { month: 'short', day: 'numeric'};
+    let StartDate = new Date(dateString);
+    return StartDate.toLocaleDateString(undefined, options);
+  };
+
+  
   const handleRating = (event, newValue, complaintid) => {
 
     let endpoint = `http://localhost:8080/auth/customer/rate/${complaintid}`;
@@ -122,7 +138,8 @@ function ComplaintTables() {
               <tr>
                 <th>Complaint Id</th>
                 <th>Description</th>
-                <th>Date</th>
+                <th>Complaint Posted On</th>
+                <th>Complaint To Be Resolved By</th>
                 <th>Status</th>
                 <th>Cancel</th>
                 <th>rating</th>
@@ -137,8 +154,15 @@ function ComplaintTables() {
                     <tr key={index} className="border-top">
                         <td>{complaint.complaintid}</td>
                         <td>{complaint.description}</td>
-                        <td>{formatDate(complaint.date)}</td>
-                      <td>
+                        <td>{formatStartDate(complaint.date)}</td>
+
+                        <td>
+                        {complaint.status === "Pending"
+                          ? formatEndDate(complaint.date, complaint.complaintType)
+                          : "-"
+                        }
+                      </td>
+                        <td>
                       <span className={`status-badge ${complaint.status.toLowerCase()}`}>
                     <strong>{complaint.status}</strong>
                     </span>
@@ -170,7 +194,9 @@ function ComplaintTables() {
                     )
                    }
                    </td>
-                   
+                   <td>
+                     
+                    </td>
 
                     </tr>
                   ))

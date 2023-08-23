@@ -12,6 +12,8 @@ function AddComplaints({ userData }) {
   const customerid = localStorage.getItem('customerid');
   const [response, setResponse] = useState("");
   const[faqs, setFaqs] = useState([]);
+  const [otherDescription, setOtherDescription] = useState("");
+  
 
   useEffect(() => {
     // Fetch FAQs from the server
@@ -25,16 +27,27 @@ function AddComplaints({ userData }) {
       });
   }, []);
 
+  let requestBody = {
+    description: description, 
+  };
+
   const handleAdd = (e) => {
     e.preventDefault();
     if (!description) {
       setErrorMessage("Description cannot be empty.");
       return;
     }
-    const requestBody = {
-        description: description // Add other fields if needed
+   
+    if (description === "Other") {
+      if (!otherDescription) {
+        setErrorMessage("Other description cannot be empty.");
+        return;
+      }
+      requestBody = {
+        description: otherDescription, // Use otherDescription if description is "Other"
       };
-
+    }
+  
 
     fetch(`http://localhost:8080/auth/customer/${customerid}/add-complaint`, {
       method: "POST",
@@ -88,17 +101,33 @@ function AddComplaints({ userData }) {
             <h3 className="card-title" style={{ textTransform: 'lowercase', margin: "20px auto" }}>What can I help you with?</h3>
             
             <form onSubmit={handleAdd}>
-              <div className="mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="description"
-                  placeholder="Description"
-                  value={description}
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                  }}
-                />
+        <div className="mb-3">
+        <select
+            className="form-control"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          >
+            <option value="">Select an option</option>
+            <option value="Login And Account">Account login issues</option>
+            <option value="Incorrect transaction amount">Incorrect transaction amount</option>
+            <option value="Simple balance inquiries">Simple balance inquiries</option>
+            <option value="Lost or stolen card cases">Card and ATM</option>
+            <option value="Address or contact information updates">Address or contact information updates</option>
+            <option value="Urgent loan or mortgage inquiries">Urgent loan or mortgage inquiries</option>
+            <option value="Technical issues on the bank's app or website">Technical issues on the bank's app or website</option>
+            <option value="Account security concerns">Account security concerns</option>
+            <option value="Billing or fee disputes">Billing or fee disputes</option>
+            <option value="Other">Other</option>
+          </select>
+          {description === "Other" && (
+            <input
+              type="text"
+              className="form-control mt-2"
+              placeholder="Enter description"
+              value={otherDescription}
+              onChange={(e) => setOtherDescription(e.target.value)}
+            />
+          )}
               </div>
               <button
                 type="submit"

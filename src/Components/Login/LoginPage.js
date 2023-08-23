@@ -31,13 +31,24 @@ function LoginPage() {
       console.log('User is logged in:', loggedIn);
       const user = JSON.parse(localStorage.getItem('user')); // Assuming you're storing user data in localStorage
       console.log('User data:', user);
-      if (user.roles[0] === 'ROLE_CUSTOMER') {
+
+   if (user.roles[0] === 'ROLE_CUSTOMER') {
+
         localStorage.setItem("customerid", user.id);
+
         navigate('/');
+
+        window.location.href = window.location.href;
+
       } else if (user.roles[0] === 'ROLE_ADMIN') {
+
         localStorage.setItem("adminid", user.id);
+
         navigate('/login/EngineerDashboard');
-      }
+
+        window.location.href = window.location.href;
+
+      }  
     }
   }, [loggedIn]);
 

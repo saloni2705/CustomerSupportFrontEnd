@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import user2 from "../../assets/images/users/user2.jpg";
+import Sidebar from '../Sidebar'; 
 import {
   MDBCol,
   MDBContainer,
@@ -84,68 +85,77 @@ function UpdateAdmin() {
   };
 
   return (
-    <section className="vh-100" style={{ backgroundColor: '#f4f5f7' }}>
-      <MDBContainer className="py-5">
-        <MDBRow className="justify-content-center">
-          <MDBCol lg="8">
-            <MDBCard className="mb-3" style={{ borderRadius: '.5rem', backgroundColor: '#fff' }}>
-              <MDBRow className="g-0">
-                <MDBCol md="4" className="gradient-custom text-center text-white">
-                  <MDBCardImage
-                    src={user2}
-                    alt="Avatar"
-                    className="my-5"
-                    style={{ width: '80px' }}
-                    fluid
-                  />
-                  <MDBTypography tag="h5" className="text-dark">
-                    {userProfileData.name}
-                  </MDBTypography>
-                  <MDBIcon far icon="edit mb-5" />
-                </MDBCol>
-                <MDBCol md="8">
-                  <MDBCardBody className="p-4">
-                    <MDBTypography tag="h6">Information</MDBTypography>
-                    <hr className="mt-0 mb-4" />
-                    <MDBTypography tag="h6">Name</MDBTypography>
-                    <input
-                      type="text"
-                      value={userProfileData.name}
-                      onChange={(e) => setUserProfileData({ ...userProfileData, name: e.target.value })}
-                      className="form-control mb-3"
-                    />
-                    <MDBTypography tag="h6">Email</MDBTypography>
-                    <input
-                      type="text"
-                      value={userProfileData.email}
-                      onChange={(e) => setUserProfileData({ ...userProfileData, email: e.target.value })}
-                      className="form-control mb-3"
-                    />
-                    <MDBTypography tag="h6">Phone</MDBTypography>
-                    <input
-                      type="text"
-                      value={userProfileData.phone_number}
-                      onChange={(e) => setUserProfileData({ ...userProfileData, phone_number: e.target.value })}
-                      className="form-control mb-4"
-                    />
-                    <button onClick={handleUpdateUserInfo} className="btn btn-primary">
-                      Update
-                    </button>
-                    {updateSuccess && (
-                      <div className="mt-3 alert alert-success" role="alert">
-                        User details updated successfully!
-                      </div>
-                    )}
-                  </MDBCardBody>
-                </MDBCol>
-              </MDBRow>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </section>
+    <div style={{ display: 'flex' }}>
+      <Sidebar />
+  
+      <div style={{ flex: 1, padding: '20px', backgroundColor: '#f4f5f7' }}>
+        <section className="vh-100">
+          <MDBContainer className="py-5">
+            <MDBRow className="justify-content-center">
+              <MDBCol lg="8">
+                <MDBCard className="mb-3" style={{ borderRadius: '.5rem', backgroundColor: '#fff' }}>
+                  <MDBRow className="g-0">
+                    <MDBCol md="4" className="gradient-custom text-center text-white"style={{
+                    borderTopLeftRadius: '.5rem',
+                    borderBottomLeftRadius: '.5rem',
+                    background: 'rgb(238,174,202)',
+                    background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,165,233,1) 100%)'
+                    }}>
+                      <MDBCardImage
+                        src={user2}
+                        alt="Avatar"
+                        className="my-5"
+                        style={{ width: '80px' }}
+                        fluid
+                      />
+                      <MDBTypography tag="h5" className="text-dark">
+                        {userProfileData.name}
+                      </MDBTypography>
+                      <MDBIcon far icon="edit mb-5" />
+                    </MDBCol>
+                    <MDBCol md="8">
+                      <MDBCardBody className="p-4">
+                        <MDBTypography tag="h6">Information</MDBTypography>
+                        <hr className="mt-0 mb-4" />
+                        <MDBTypography tag="h6">Name</MDBTypography>
+                        <input
+                          type="text"
+                          value={userProfileData.name}
+                          onChange={(e) => setUserProfileData({ ...userProfileData, name: e.target.value })}
+                          className="form-control mb-3"
+                        />
+                        <MDBTypography tag="h6">Email</MDBTypography>
+                        <input
+                          type="text"
+                          value={userProfileData.email}
+                          onChange={(e) => setUserProfileData({ ...userProfileData, email: e.target.value })}
+                          className="form-control mb-3"
+                        />
+                        <MDBTypography tag="h6">Phone</MDBTypography>
+                        <input
+                          type="text"
+                          value={userProfileData.phone_number}
+                          onChange={(e) => setUserProfileData({ ...userProfileData, phone_number: e.target.value })}
+                          className="form-control mb-4"
+                        />
+                        <button onClick={handleUpdateUserInfo} className="btn btn-primary">
+                          Update
+                        </button>
+                        {updateSuccess && (
+                          <div className="mt-3 alert alert-success" role="alert">
+                            User details updated successfully!
+                          </div>
+                        )}
+                      </MDBCardBody>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBCard>
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+      </div>
+    </div>
   );
-}
-
+ }  
 export default UpdateAdmin;
-

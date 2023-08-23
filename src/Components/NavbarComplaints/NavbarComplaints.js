@@ -12,7 +12,7 @@ function NavbarComplaints({ loggedIn }) {
   };
 
   return (
-    <nav style={{ backgroundColor: "#ac2358", padding: "15px 20px", boxShadow: "0 4px 6px rgba(152,20,77,255)" }}>
+    <nav style={{ backgroundColor: "#ac2358", padding: "15px 20px", boxShadow: "0 4px 6px rgba(152, 20, 77, 0.3)"  }}>
       <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", justifyContent: "flex-end" }}>
         {/* Link to ViewComplaints */}
         <li style={{ marginLeft: "20px" }}>

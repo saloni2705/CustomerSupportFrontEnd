@@ -72,7 +72,7 @@ function ForgotPasswordPage() {
 
               <MDBBtn
                 className="mb-4 px-5"
-                color="dark"
+                style={{ backgroundColor: '#98144d' }}
                 size="lg"
                 onClick={handleForgotPassword}
               >
